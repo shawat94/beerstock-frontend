@@ -1,0 +1,58 @@
+.TapTable {
+    width: 100%;
+    background-color: #373737;
+}
+
+.TapTableRow {
+    border: 1px solid white;
+}
+
+.TapTableDescColumn {
+    padding: 15px;
+    border: 1px solid white;
+    width: 100%;
+    vertical-align: top;
+    text-align: left;
+}
+
+.TapTableDetailsColumn {
+    padding: 15px;
+    width: 100px;
+    vertical-align: top;
+    text-align: left;
+}
+
+.TapTableDescFont {
+    font: Verdana;
+    color: white;
+    font-size: large
+}
+
+.TapTableNameFont {
+    font: Verdana;
+    color: white;
+    font-size: xx-large;
+    margin: 0;
+}
+
+.TapTableStyleFont {
+    font: Verdana;
+    color: white;
+    font-size: medium;
+    padding: 0px;
+    margin: 0;
+}
+
+.TapTableBreweryFont {
+    font: Verdana;
+    color: white;
+    font-size: large;
+    margin: 0;
+}
+
+.TapTableAbvIbuFont {
+    font: Verdana;
+    color: white;
+    font-size: small;
+    margin: 0;
+}
