@@ -9,7 +9,7 @@
 
 .TapTableDescColumn {
     padding: 15px;
-    border: 1px solid white;
+    border-left: 1px solid white;
     width: 100%;
     vertical-align: top;
     text-align: left;
@@ -25,20 +25,20 @@
 .TapTableDescFont {
     font: Verdana;
     color: white;
-    font-size: large
+    font-size: 20px
 }
 
 .TapTableNameFont {
     font: Verdana;
     color: white;
-    font-size: xx-large;
+    font-size: 20px;
     margin: 0;
 }
 
 .TapTableStyleFont {
     font: Verdana;
     color: white;
-    font-size: medium;
+    font-size: 20px;
     padding: 0px;
     margin: 0;
 }
@@ -53,6 +53,6 @@
 .TapTableAbvIbuFont {
     font: Verdana;
     color: white;
-    font-size: small;
+    font-size: 15px;
     margin: 0;
 }

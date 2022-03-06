@@ -8,7 +8,8 @@ export const tapitem = (tap) => {
             <table className={styles.TapTable}>
                 <colgroup>
                     <col style={{span: "1", width: "20%"}} />
-                    <col style={{span: "1", width: "20%"}} />
+                    <col style={{span: "1", width: "10%"}} />
+                    <col style={{span: "1", width: "10%"}} />
                     <col style={{span: "1", width: "60%"}} />
                 </colgroup>
 
@@ -20,6 +21,8 @@ export const tapitem = (tap) => {
                                 {tap['brewery']}
                             </p>
                             }
+                    </td>
+                    <td>
                         <p className={styles.TapTableStyleFont}>{tap['style']}</p>
                         <p className={styles.TapTableAbvIbuFont}>
                             ABV: {tap['abv']}%<br />
@@ -27,9 +30,7 @@ export const tapitem = (tap) => {
                         </p>
                     </td>
                     <td>
-                        {tap['type'] === 'bottle' &&
-                            <BottleIcon />
-                        }
+                        {tap['type'] === 'bottle' && <BottleIcon />}
                     </td>
                     <td className={styles.TapTableDescColumn}>
                         <p className={styles.TapTableDescFont}>{tap['description']}</p>
