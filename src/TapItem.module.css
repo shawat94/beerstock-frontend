@@ -25,20 +25,21 @@
 .TapTableDescFont {
     font: Verdana;
     color: white;
-    font-size: 20px
+    font-size: 18px
 }
 
 .TapTableNameFont {
     font: Verdana;
     color: white;
     font-size: 20px;
+    padding-bottom: 5px;
     margin: 0;
 }
 
 .TapTableStyleFont {
     font: Verdana;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     padding: 0px;
     margin: 0;
 }
@@ -46,8 +47,19 @@
 .TapTableBreweryFont {
     font: Verdana;
     color: white;
-    font-size: large;
+    padding: 0px;
+    font-size: 18px;
     margin: 0;
+}
+
+.TapTableNameBrewerySet {
+    padding-top: 0px;
+    padding-bottom: 15px;
+}
+
+.TapTableButton {
+    padding: 2px;
+    display: inline-block;
 }
 
 .TapTableAbvIbuFont {

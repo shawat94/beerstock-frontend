@@ -61,6 +61,18 @@ const Create = () => {
           name="Remaining" 
           onChange={({target}) => updateTap('remaining', target.value)} 
         />
+        <p>Brewery</p>
+        <input 
+          type="text" 
+          name="Brewery" 
+          onChange={({target}) => updateTap('brewery', target.value)} 
+        />
+        <p>Color</p>
+        <input 
+          type="text" 
+          name="Color" 
+          onChange={({target}) => updateTap('color', target.value)} 
+        />
         <p>Description</p>
         <input 
           type="text" 

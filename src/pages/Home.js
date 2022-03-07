@@ -1,13 +1,14 @@
 import React from 'react'
+import TapItem from '../components/TapItem'
 
-const Home = ({styles, LoginForm, user, taps}) => {
+const Home = ({styles, LoginForm, user, taps, setTaps}) => {
 
   if (user) {
     if (taps.length > 0) {
       return (
           <div className={styles.App}>
           <p className={styles.BreweryTitle}>Beer List</p>
-          {taps}
+          {taps.map(tap => <TapItem tap={tap} taps={taps} setTaps={setTaps}/>)}
           </div>
         )
     } else {
@@ -17,7 +18,7 @@ const Home = ({styles, LoginForm, user, taps}) => {
     }
   } else {
     return (
-      <p className={styles.LoginText}>Login to view your beer list</p>
+      <p className={styles.LoginText}>Log in to view your beer list</p>
     )
   }
 

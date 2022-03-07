@@ -4,7 +4,7 @@ import {
   Routes, Route
 } from "react-router-dom"
 import { NavDropdown, Button } from 'react-bootstrap'
-import tapitem from './tap_item.js'
+import TapItem from './components/TapItem.js'
 import styles from "./App.module.css";
 import loginService from './services/login'
 import tapsService from './services/taps'
@@ -31,7 +31,7 @@ const App = () => {
     if (loggedInUser) {
       let currentUser = await usersService.get(loggedInUser.id)
       let userTaps = currentUser.taps
-      setTaps(userTaps.map(tap => tapitem(tap)))
+      setTaps(userTaps)
       setUser(currentUser)
       tapsService.setToken(loggedInUser.token)
     } else {
@@ -106,7 +106,7 @@ const App = () => {
       <Routes>
         <Route path='/create' element={<Create />} />
         <Route path='/signup' element={<SignUp />} />
-        <Route path='/' element={<Home styles={styles} LoginForm={LoginForm} user={user} taps={taps} />} />
+        <Route path='/' element={<Home styles={styles} LoginForm={LoginForm} user={user} taps={taps} setTaps={setTaps}/>} />
       </Routes>
 
     </Router>
