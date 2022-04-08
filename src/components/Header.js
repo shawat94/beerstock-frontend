@@ -22,7 +22,7 @@ const Header = ({LoginForm, user, setLoggedIn, setUser}) => {
           </Nav.Link>
         </Nav>
         <Nav className="ms-auto">
-          <NavDropdown menuVariant="dark" title={user ? user.username : "Login"}>
+          <NavDropdown id="user-login-dropdown" menuVariant="dark" title={user ? user.username : "Login"}>
             {!user ? LoginForm() : <LogoutButton user={user} setLoggedIn={setLoggedIn} setUser={setUser} />}
           </NavDropdown>
         </Nav>

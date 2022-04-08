@@ -3,10 +3,11 @@ import React from 'react'
   const LoginForm = () => {
     if (!user) { 
       return (
-        <form onSubmit={handleLogin}>
+        <form id="login-form" onSubmit={handleLogin}>
           <div>
             Username
               <input
+              id="login-username-field"
               type="text"
               value={username}
               name="Username"
@@ -16,13 +17,14 @@ import React from 'react'
           <div>
             Password
               <input
+              id="login-password-field"
               type="password"
               value={password}
               name="Password"
               onChange={({ target }) => setPassword(target.value)}
             />
           </div>
-          <button type="submit">login</button>
+          <button id="login-submit-button" type="submit">Login</button>
         </form>      
         )
       }

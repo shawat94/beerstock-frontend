@@ -1,10 +1,10 @@
 import React from 'react'
 import SignUpForm from '../components/SignUpForm'
 
-const SignUp = () => {
+const SignUp = ({ updateNotification }) => {
   return (
-    <SignUpForm />
+    <SignUpForm updateNotification={updateNotification} />
   )
 }
 
-export default SignUp
+export default SignUp 

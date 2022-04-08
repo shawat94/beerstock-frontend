@@ -1,0 +1,17 @@
+.SignUpForm {
+  align-items: center;
+  padding-left: 30%;
+  padding-right: 30%;
+}
+
+p {
+  padding-bottom: 0px;
+  padding-top: 20px;
+}
+
+input {
+  padding: 0px;
+  border: 0px;
+  margin: 0px;
+  vertical-align: top
+}

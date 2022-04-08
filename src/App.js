@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes, Route
 } from "react-router-dom"
-import { NavDropdown, Button } from 'react-bootstrap'
+import { NavDropdown, Button, Alert } from 'react-bootstrap'
 import TapItem from './components/TapItem.js'
 import styles from "./App.module.css";
 import loginService from './services/login'
@@ -24,6 +24,7 @@ const App = () => {
   const [user, setUser] = useState(null)
   const [taps, setTaps] = useState([])
   const [loggedIn, setLoggedIn] = useState(null)
+  const [notification, setNotification] = useState({type: '', message: ''})
 
   useEffect(async () => {
     console.log(JSON.parse(localStorage.getItem('loggedInUser')))
@@ -40,6 +41,14 @@ const App = () => {
     }
     console.log(taps)
   }, [loggedIn])
+
+  const updateNotification = (message, type) => {
+    setNotification({message: message, type: type})
+    console.log(notification)
+    setTimeout(() => {
+      setNotification({message: '', type: ''})
+    }, 5000)
+  }
 
   const handleLogin = async (event) => {
     event.preventDefault()
@@ -60,11 +69,9 @@ const App = () => {
       setUsername('')
       setPassword('')
       setLoggedIn(true)
-    } catch (exception) {
-      setErrorMessage('Wrong username or password')
-      setTimeout(() => {
-        setErrorMessage(null)
-      }, 5000)
+      updateNotification(`Logged in as ${username}!`, 'success')
+    } catch (error) {
+      updateNotification('Wrong username or password', 'alert')
     }
   }
 
@@ -74,6 +81,7 @@ const App = () => {
         <div>
           Username
             <input
+            id="login-username-field"
             type="text"
             value={username}
             name="Username"
@@ -83,6 +91,7 @@ const App = () => {
         <div>
           Password
             <input
+            id="login-password-field"
             type="password"
             value={password}
             name="Password"
@@ -103,9 +112,11 @@ const App = () => {
     <Router>
       <Header  LoginForm={LoginForm} setLoggedIn={setLoggedIn} user={user} setUser={setUser} />
 
+      {notification.type ? <Alert variant={notification.type === 'error' ? 'danger' : 'success'}>{notification.message}</Alert> : null}
+
       <Routes>
         <Route path='/create' element={<Create />} />
-        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signup' element={<SignUp updateNotification={updateNotification} />} />
         <Route path='/' element={<Home styles={styles} LoginForm={LoginForm} user={user} taps={taps} setTaps={setTaps}/>} />
       </Routes>
 

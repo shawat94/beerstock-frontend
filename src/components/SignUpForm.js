@@ -2,20 +2,26 @@ import React, { useState } from 'react'
 import usersService from '../services/users'
 import { Button } from 'react-bootstrap'
 
-const SignUpForm = () => {
+const SignUpForm = ({ updateNotification }) => {
   const [newUsername, setNewUsername] = useState('')
   const [newName, setNewName] = useState()
   const [newPassword, setNewPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
 
-  const handleSignUp = (event) => {
+  const handleSignUp = async (event) => {
     event.preventDefault()
     let newUserObject = {
       username: newUsername,
       name: newName,
       password: newPassword
     }
-    usersService.create(newUserObject)
+    try {
+      await usersService.create(newUserObject)
+      updateNotification(`User ${newName} was created!`, )
+    } catch (error) {
+      console.log(error)
+      updateNotification('Username is already taken', 'error')
+    }
   }
 
   return (
