@@ -2,9 +2,12 @@ import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
+import TapItem from './TapItem'
+import testTaplist from '../resources/testTaplists'
 
 test('Create a new tap', async () => {
   const newTap = {
+    id: "test",
     name: "Test Tap",
     style: "IPA",
     abv: "7.0",
@@ -18,6 +21,11 @@ test('Create a new tap', async () => {
   }
 
   const mockHandler = jest.fn()
+
+  render(
+    <TapItem tap={newTap} taps={testTaplist} setTaps={mockHandler} />
+  )
+
 
   
 })

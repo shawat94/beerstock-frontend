@@ -10,9 +10,7 @@ const RemoveButton = ({ tap, taps, setTaps }) => {
   }
 
   const removeTap = async (tap) => {
-    console.log(tap)
-    const response = await tapsService.remove(tap.id)
-    console.log(response.body)
+    await tapsService.remove(tap.id)
     const newTaps = taps.filter(existingTap => existingTap.id !== tap.id)
     setTaps(newTaps)
 

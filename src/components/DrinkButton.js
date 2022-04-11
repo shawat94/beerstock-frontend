@@ -14,6 +14,7 @@ const DrinkButton = ({ tap, taps, setTaps }) => {
     console.log(updatedTap)
     console.log(`ID is ${tap.id}`)
     const response = await tapsService.update(tap.id, updatedTap)
+    console.log('huh')
     console.log(response)
     const newTaps = (taps.map(existingTap => {
       if (existingTap.id == tap.id) {
@@ -24,6 +25,7 @@ const DrinkButton = ({ tap, taps, setTaps }) => {
     )
     console.log(newTaps)
     setTaps(newTaps)
+    console.log('did it work')
   }
 
   return (
