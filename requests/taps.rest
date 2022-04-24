@@ -1,0 +1,21 @@
+POST http://localhost:3002/api/taps
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkFkYW0tVGVzdC1OZXctMiIsImlkIjoiNjIyM2QzN2EyOTQyYzc3MTZkMjFlYWFkIiwiaWF0IjoxNjQ2NjIyNTg0fQ.emDc8F9Q9DECsdbmeda6aFdwzI5eFaZNwXAOhLnn2xs
+
+
+{
+  "name": "Rutherford",
+  "style": "Farmhouse IPA",
+  "abv": "6.8",
+  "ibu": "40",
+  "type": "can",
+  "color": "pale",
+  "brewery": "Fair Isle",
+  "remaining": "2",
+  "description": "A farmhouse ale dry-hopped with Enigma and Wakatu, and fermented with a house strain of wild & feral yeasts and bacterias."
+}
+
+###
+
+GET http://localhost:3002/api/taps
+Content-Type: application/json
