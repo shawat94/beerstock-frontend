@@ -17,7 +17,7 @@ const SignUpForm = ({ updateNotification }) => {
     }
     try {
       await usersService.create(newUserObject)
-      updateNotification(`User ${newName} was created!`, )
+      updateNotification(`User ${newName} was created!`, 'success')
     } catch (error) {
       console.log(error)
       updateNotification('Username is already taken', 'error')
@@ -50,7 +50,7 @@ const SignUpForm = ({ updateNotification }) => {
         />
         Confirm Password
         <input 
-        type="confirmpassword"
+        type="password"
         name="Confirm Password"
         value={confirmPassword}
         onChange={({ target }) => setConfirmPassword(target.value)}

@@ -13,7 +13,6 @@ const RemoveButton = ({ tap, taps, setTaps }) => {
     await tapsService.remove(tap.id)
     const newTaps = taps.filter(existingTap => existingTap.id !== tap.id)
     setTaps(newTaps)
-
   }
 
   return (

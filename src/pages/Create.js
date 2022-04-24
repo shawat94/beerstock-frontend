@@ -2,13 +2,18 @@ import React, {useState} from 'react'
 import tapsService from '../services/taps'
 import styles from '../Create.module.css'
 
-const Create = () => {
+const Create = ({ updateNotification }) => {
   const [newTap, setNewTap] = useState({})
 
   const createNewTap = async () => {
-    let response = await tapsService.create(newTap)
-    console.log(response)
+    try {
+      let response = await tapsService.create(newTap)
+      console.log(response)
+      updateNotification(`New beer ${response.name} was created!`, 'success')
+    } catch (error) {
+      updateNotification('New beer could not be created', 'error')
   }
+}
 
   const updateTap = (keyName, value) => {
     let newEntry = {[keyName]: value}

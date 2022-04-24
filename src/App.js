@@ -115,7 +115,7 @@ const App = () => {
       {notification.type ? <Alert variant={notification.type === 'error' ? 'danger' : 'success'}>{notification.message}</Alert> : null}
 
       <Routes>
-        <Route path='/create' element={<Create />} />
+        <Route path='/create' element={<Create updateNotification={updateNotification} />} />
         <Route path='/signup' element={<SignUp updateNotification={updateNotification} />} />
         <Route path='/' element={<Home styles={styles} LoginForm={LoginForm} user={user} taps={taps} setTaps={setTaps}/>} />
       </Routes>
