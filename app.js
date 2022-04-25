@@ -6,6 +6,7 @@ const tapsRouter = require('./controllers/taps')
 const usersRouter = require('./controllers/users')
 const loginRouter = require('./controllers/login')
 const config = require('./config')
+const path = require('path')
 
 mongoose.connect(config.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
