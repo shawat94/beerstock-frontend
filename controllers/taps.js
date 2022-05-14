@@ -24,37 +24,43 @@ tapsRouter.get('/', async (request, response) => {
 
 tapsRouter.post('/', async (request, response) => {
   const body = request.body
+  const decodedToken = ''
   console.log(body)
   const token = getTokenFrom(request)
-  const decodedToken = jwt.verify(token, process.env.SECRET)
-  if (!decodedToken.id) {
-    return response.status(401).json({ error: 'token is missing or invalid' })
+  if (token) {
+    decodedToken = jwt.verify(token, process.env.SECRET)
   }
-
-  const user = await User.findById(decodedToken.id)
-
-  if (body === undefined) {
+  if (!token) {
+    console.log('token is missing')
+    return response.status(401).json({ error: 'token is missing' })  }
+  else if (!decodedToken.id) {
+    console.log('token is invalid')
+    return response.status(401).json({ error: 'token is invalid' })
+  }
+  else if (body === undefined) {
+    console.log('content missing')
     return response.status(400).json({ error: 'content missing' })
+  } else {  
+    const tap = new Tap({
+      name: body.name,
+      style: body.style,
+      abv: body.abv,
+      ibu: body.ibu,
+      type: body.type,
+      brewery: body.brewery,
+      remaining: body.remaining,
+      description: body.description,
+      color: body.color,
+      user: user._id
+    })
+
+    const user = await User.findById(decodedToken.id)
+    savedTap = await tap.save()
+    user.taps = user.taps.concat(savedTap._id)
+    await user.save()
+    console.log('new tap saved')
+    response.json(savedTap.toJSON())
   }
-
-  const tap = new Tap({
-    name: body.name,
-    style: body.style,
-    abv: body.abv,
-    ibu: body.ibu,
-    type: body.type,
-    brewery: body.brewery,
-    remaining: body.remaining,
-    description: body.description,
-    color: body.color,
-    user: user._id
-  })
-
-  savedTap = await tap.save()
-  user.taps = user.taps.concat(savedTap._id)
-  await user.save()
-
-  response.json(savedTap.toJSON())
 })
 
 tapsRouter.delete('/:id', async (request, response) => {
